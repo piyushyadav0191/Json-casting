@@ -1,8 +1,10 @@
+"use client"
 import {Button, Divider, Input, Text} from '@nextui-org/react';
 import React from 'react';
 import { CheckIcon } from '@/styles/icons'; 
 import {Box} from '@/styles/box';
 import {Flex} from '@/styles/flex';
+import Link from 'next/link';
 
 export const Hero = () => {
    return (
@@ -16,6 +18,7 @@ export const Hero = () => {
                'justifyContent': 'center',
                'alignItems': 'center',
                'width': '100%',
+               'height': '100%',
                '@sm': {
                   flexDirection: 'row',
                   mt: '$20',
@@ -51,7 +54,7 @@ export const Hero = () => {
                         display: 'inline',
                      }}
                   >
-                     to JSON{' '}
+                     JSON{' '}
                   </Text>
                   <Text
                      h1
@@ -72,7 +75,7 @@ export const Hero = () => {
                   size={'$lg'}
                   span
                >
-                  The easiest way to convert any types to JSON. No more
+                  The Easiest way to communicate with your any Data with any Data type with the help of AI. We convert your Important data to JSON format.
                </Text>
 
                <Flex
@@ -82,8 +85,13 @@ export const Hero = () => {
                   }}
                   wrap={'wrap'}
                >
-                  <Input placeholder="Enter your email address" size="lg" />
-                  <Button>Start Free Trial</Button>
+                 
+                  <Link href={"/playground"}>
+                  <Button>Playground</Button>
+                  </Link>
+                  <Link href={""}>
+                  <Button>Start on Github</Button>
+                  </Link>
                </Flex>
                <Flex
                   wrap={'wrap'}
@@ -109,7 +117,7 @@ export const Hero = () => {
                         alignItems: 'center',
                      }}
                   >
-                     <CheckIcon /> 14-day free trial.
+                     <CheckIcon /> Free open source
                   </Flex>
                   <Flex
                      css={{
@@ -117,7 +125,7 @@ export const Hero = () => {
                         alignItems: 'center',
                      }}
                   >
-                     <CheckIcon /> Cancel anytime.
+                     <CheckIcon /> Easy to use
                   </Flex>
                </Flex>
             </Box>
@@ -129,12 +137,9 @@ export const Hero = () => {
                   },
                }}
             >
-               <img src="mock.png" />
+               <img src="/demo.jpg" />
             </Box>
          </Flex>
-         <Divider
-            css={{position: 'absolute', inset: '0p', left: '0', mt: '$10'}}
-         />
       </>
    );
 };

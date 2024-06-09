@@ -5,16 +5,14 @@ import React from 'react';
 import {useTheme as useNextTheme} from 'next-themes';
 import {useTheme} from '@nextui-org/react';
 import { icons } from '@/styles/icons';
+import NextLink   from 'next/link';
 
 export const Nav = () => {
    const {setTheme} = useNextTheme();
    const {isDark, type} = useTheme();
    const collapseItems = [
       'Features',
-      'Customers',
-      'Pricing',
-      'Company',
-      'Legal',
+      'Playground'
    ];
    return (
       <Navbar
@@ -29,9 +27,12 @@ export const Nav = () => {
       >
          <Navbar.Brand>
             <Navbar.Toggle aria-label="toggle navigation" showIn="xs" />
+            <NextLink href={"/"}>
+
             <Text b color="inherit" hideIn="xs">
                To JSON
             </Text>
+            </NextLink>
             <Navbar.Content
                hideIn="sm"
                css={{
@@ -55,7 +56,7 @@ export const Nav = () => {
                      </Dropdown.Button>
                   </Navbar.Item>
                   <Dropdown.Menu
-                     aria-label="ACME features"
+                     aria-label="features"
                      css={{
                         '$$dropdownMenuWidth': '340px',
                         '$$dropdownItemHeight': '70px',
@@ -73,52 +74,50 @@ export const Nav = () => {
                      }}
                   >
                      <Dropdown.Item
-                        key="autoscaling"
+                        key="time-effective"
                         showFullDescription
-                        description="ACME scales apps to meet user demand, automagically, based on load."
+                        description="Save time and focus on your work. We’ll take care of the types."
                         icon={icons.scale}
                      >
-                        Autoscaling
+                        Time Effective
                      </Dropdown.Item>
                      <Dropdown.Item
-                        key="usage_metrics"
+                        key="open-source"
                         showFullDescription
-                        description="Real-time metrics to debug issues. Slow query added? We’ll show you exactly where."
+                        description="To JSON is open source, and we’d love for you to join us."
                         icon={icons.activity}
                      >
-                        Usage Metrics
+                        Open Source
                      </Dropdown.Item>
                      <Dropdown.Item
                         key="production_ready"
                         showFullDescription
-                        description="ACME runs on ACME, join us and others serving requests at web scale."
-                        icon={icons.flash}
+                        description="To JSON is production-ready, and compatible with any framework."
+                        icon={icons.server}
                      >
                         Production Ready
                      </Dropdown.Item>
                      <Dropdown.Item
-                        key="99_uptime"
+                        key="lighting-fast-response"
                         showFullDescription
-                        description="Applications stay on the grid with high availability and high uptime guarantees."
-                        icon={icons.server}
+                        description="To JSON provides lighting-fast responses to your requests."
+                      
+                         icon={icons.flash}
                      >
-                        +99% Uptime
+                        Lighting-fast
                      </Dropdown.Item>
                      <Dropdown.Item
-                        key="supreme_support"
+                        key="easy_to_use"
                         showFullDescription
-                        description="Overcome any challenge with a supporting team ready to respond."
+                        description="To JSON is easy to use, and you can get started in minutes."
                         icon={icons.user}
                      >
-                        +Supreme Support
+                        Easy to Use
                      </Dropdown.Item>
                   </Dropdown.Menu>
                </Dropdown>
-               <Navbar.Link isActive href="#">
-                  Customers
-               </Navbar.Link>
-               <Navbar.Link href="#">Pricing</Navbar.Link>
-               <Navbar.Link href="#">Company</Navbar.Link>
+               <NextLink href="/playground">Playground</NextLink>
+               
             </Navbar.Content>
          </Navbar.Brand>
 

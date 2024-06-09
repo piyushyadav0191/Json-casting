@@ -3,6 +3,8 @@
 import { createTheme, NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { Box } from "./styles/box";
+import React from "react";
+
 
 const lightTheme = createTheme({
   type: "light",
@@ -23,7 +25,9 @@ type Props = {
 };
 
 const ThemeProvider = ({ children }: Props) => {
+
   return (
+
     <NextThemesProvider
       defaultTheme="system"
       attribute="class"

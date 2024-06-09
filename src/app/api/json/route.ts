@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { ZodTypeAny, z } from "zod";
+import { z, ZodTypeAny } from "zod";
 import { replicate } from "@/lib/replicate";
 import { EXAMPLE_ANSWER } from "./example";
 
@@ -14,7 +14,7 @@ const determineSchemaType = (schema: any): string => {
   return schema.type
 }
 
-const jsonSchemaToZod = (schema: any): ZodTypeAny => {
+const jsonSchemaToZod = (schema: any): any => {
   const type = determineSchemaType(schema)
 
   switch (type) {
@@ -27,7 +27,7 @@ const jsonSchemaToZod = (schema: any): ZodTypeAny => {
     case "array":
       return z.array(jsonSchemaToZod(schema.items)).nullable()
     case "object":
-      const shape: Record<string, ZodTypeAny> = {}
+      const shape: Record<string, any> = {}
       for (const key in schema) {
         if (key !== "type") {
           shape[key] = jsonSchemaToZod(schema[key])
@@ -97,7 +97,7 @@ export const POST = async (req: NextRequest) => {
         };
 
         const text = await replicate.run("meta/llama-2-70b-chat", {input})
-
+          // @ts-ignore
         const validationResult = text.join("")  
           console.log(JSON.parse(validationResult))
         return resolve(JSON.parse(validationResult))
